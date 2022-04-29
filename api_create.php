@@ -1,4 +1,6 @@
 <?php
+require_once "dbconfig.php";
+
 //tells request is a json 
 header("Content-Type: application/json");
 
@@ -21,8 +23,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 $pname = $data["name"];
 $pprice = $data["price"];
 
-require_once "dbconfig.php";
-
+//uses sql to try insert the new value or data in the database
 $query = "INSERT INTO tbl_product(product_name, product_price) 
                         VALUES ('".$pname."','".$pprice."')";
 
